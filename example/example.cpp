@@ -8,6 +8,7 @@
 #include <bluez-dbus-cpp/GenericCharacteristic.h>
 #include <bluez-dbus-cpp/ReadOnlyCharacteristic.h>
 #include "SerialCharacteristic.h"
+#include "SerialDescriptor.h"
 
 #include <iostream>
 #include <signal.h>
@@ -67,8 +68,9 @@ int main(int argc, char *argv[])
     ReadOnlyCharacteristic::createFinal( srv1, "2A29", "ACME Inc." ); // manufacturer
 
     auto srv2 = std::make_shared<GattService1>( app, "serial", "368a3edf-514e-4f70-ba8f-2d0a5a62bc8c" );
-    SerialCharacteristic::create( srv2, connection, "de0a7b0c-358f-4cef-b778-8fe9abf09d53" )
-        .finalize();
+    auto carac = SerialCharacteristic::create( srv2, connection, "de0a7b0c-358f-4cef-b778-8fe9abf09d53" ).finalize();
+    auto desc = std::shared_ptr<GattDescriptor1>(SerialDescriptor::create(carac, "name", "de0a7b0c-358f-4cef-b778-8fe9abf09d54", "teste"));
+    carac->addDescriptor(desc);
 
     auto register_app_callback = [](const sdbus::Error* error)
     {

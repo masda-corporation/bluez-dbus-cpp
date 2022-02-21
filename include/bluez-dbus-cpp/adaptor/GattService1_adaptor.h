@@ -24,7 +24,7 @@ protected:
     {
         object_.registerProperty("UUID").onInterface(INTERFACE_NAME).withGetter([this](){ return this->UUID(); });
         object_.registerProperty("Primary").onInterface(INTERFACE_NAME).withGetter([this](){ return this->Primary(); });
-        object_.registerProperty("Includes").onInterface(INTERFACE_NAME).withGetter([this](){ return this->Includes(); });
+        // object_.registerProperty("Includes").onInterface(INTERFACE_NAME).withGetter([this](){ return this->Includes(); });
     }
 
     ~GattService1_adaptor() = default;

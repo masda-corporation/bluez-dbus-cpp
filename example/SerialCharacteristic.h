@@ -59,8 +59,8 @@ public:
 
     static SerialCharacteristic& create(std::shared_ptr<GattService1> service, std::shared_ptr<IConnection> connection, std::string uuid)
     {
-        auto self = new SerialCharacteristic( move(service), move(connection), move(uuid) );
-        return *self;
+	auto self = new SerialCharacteristic(move(service), move(connection), move(uuid));
+	return *self;
     }
 
 protected:

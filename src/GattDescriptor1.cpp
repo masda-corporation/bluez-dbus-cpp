@@ -24,12 +24,12 @@ GattDescriptor1::GattDescriptor1( std::shared_ptr<GattCharacteristic1> character
       uuid_{ std::move(uuid) }
 {
     registerAdaptor();
-    characteristic_->addDescriptor( shared_from_this() );
+    // characteristic_->addDescriptor( shared_from_this() );
 }
 
 GattDescriptor1::~GattDescriptor1()
 {
-    characteristic_->removeDescriptor( shared_from_this() );
+    // characteristic_->removeDescriptor( shared_from_this() );
     unregisterAdaptor();
 }
 

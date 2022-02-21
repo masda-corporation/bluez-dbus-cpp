@@ -42,15 +42,15 @@ public:
     void addValue( std::vector<uint8_t> value );
     void addFlag( std::string flag );
 
-protected:
+    const std::string& getPath() const;
+    const std::shared_ptr<IConnection> getConnection() const;
+
     friend GattDescriptor1;
     friend GattService1;
     void enableAcquireWrite(void);
     void enableAcquireNotify(void);
     virtual void addDescriptor( std::shared_ptr<GattDescriptor1> descriptor );
     virtual void removeDescriptor( std::shared_ptr<GattDescriptor1> descriptor );
-    const std::string& getPath() const;
-    const std::shared_ptr<IConnection> getConnection() const;
 
 protected:
     /**
